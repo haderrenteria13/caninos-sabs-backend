@@ -1,4 +1,4 @@
-const Category = require('../models/category.models');
+const Category = require("../models/category.models");
 
 // Crear una categoría
 const createCategory = async (req, res) => {
@@ -6,14 +6,14 @@ const createCategory = async (req, res) => {
     const { name, description } = req.body;
     const newCategory = await Category.create({ name, description });
     res.status(201).json({
-      status: 'success',
-      message: 'Categoría creada exitosamente',
-      category: newCategory
+      status: "success",
+      message: "Categoría creada exitosamente",
+      category: newCategory,
     });
   } catch (error) {
     res.status(400).json({
-      status: 'error',
-      message: error.message
+      status: "error",
+      message: error.message,
     });
   }
 };
@@ -23,13 +23,13 @@ const getAllCategories = async (req, res) => {
   try {
     const categories = await Category.findAll();
     res.status(200).json({
-      status: 'success',
-      categories
+      status: "success",
+      categories,
     });
   } catch (error) {
     res.status(400).json({
-      status: 'error',
-      message: error.message
+      status: "error",
+      message: error.message,
     });
   }
 };
@@ -41,18 +41,18 @@ const getCategoryById = async (req, res) => {
     const category = await Category.findByPk(id);
     if (!category) {
       return res.status(404).json({
-        status: 'error',
-        message: 'Categoría no encontrada'
+        status: "error",
+        message: "Categoría no encontrada",
       });
     }
     res.status(200).json({
-      status: 'success',
-      category
+      status: "success",
+      category,
     });
   } catch (error) {
     res.status(400).json({
-      status: 'error',
-      message: error.message
+      status: "error",
+      message: error.message,
     });
   }
 };
@@ -65,22 +65,22 @@ const updateCategory = async (req, res) => {
     const category = await Category.findByPk(id);
     if (!category) {
       return res.status(404).json({
-        status: 'error',
-        message: 'Categoría no encontrada'
+        status: "error",
+        message: "Categoría no encontrada",
       });
     }
     category.name = name || category.name;
     category.description = description || category.description;
     await category.save();
     res.status(200).json({
-      status: 'success',
-      message: 'Categoría actualizada exitosamente',
-      category
+      status: "success",
+      message: "Categoría actualizada exitosamente",
+      category,
     });
   } catch (error) {
     res.status(400).json({
-      status: 'error',
-      message: error.message
+      status: "error",
+      message: error.message,
     });
   }
 };
@@ -92,19 +92,19 @@ const deleteCategory = async (req, res) => {
     const category = await Category.findByPk(id);
     if (!category) {
       return res.status(404).json({
-        status: 'error',
-        message: 'Categoría no encontrada'
+        status: "error",
+        message: "Categoría no encontrada",
       });
     }
     await category.destroy();
     res.status(200).json({
-      status: 'success',
-      message: 'Categoría eliminada exitosamente'
+      status: "success",
+      message: "Categoría eliminada exitosamente",
     });
   } catch (error) {
     res.status(400).json({
-      status: 'error',
-      message: error.message
+      status: "error",
+      message: error.message,
     });
   }
 };
@@ -114,5 +114,5 @@ module.exports = {
   getAllCategories,
   getCategoryById,
   updateCategory,
-  deleteCategory
+  deleteCategory,
 };

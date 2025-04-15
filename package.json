@@ -1,20 +1,43 @@
 {
-  "name": "api_node",
+  "name": "caninos-sabs-backend",
   "version": "1.0.0",
+  "description": "API RESTful for managing data on the Caninos SABS platform, using Node.js, Express and Mongo DB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Caninos SABS development team",
+  "contributors": [
+    {
+      "name": "Hader Andres Palacios Rentería",
+      "url": "https://github.com/haderrenteria13"
+    },
+    {
+      "name": "Andres Felipe Conde Estrada",
+      "url": "https://github.com/andrescon0212"
+    },
+    {
+      "name": "Camila Argaez Granada",
+      "url": "https://github.com/gcamila2006"
+    },
+    {
+      "name": "Camilo Bravo Campo",
+      "url": "https://github.com/"
+    }
+  ],
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/haderrenteria13/caninos-sabs-platform/issues"
+  },
+  "homepage": "https://github.com/haderrenteria13/caninos-sabs-platform#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.14.0",
     "sequelize": "^6.37.7",
