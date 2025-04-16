@@ -7,7 +7,19 @@ const sequalize = require("./config/db");
 const port = process.env.PORT;
 app.use(express.json());
 
-app.use(cors());
+const corsOptions = {
+  development: {
+    origin: "*", 
+  },
+  production: {
+    origin: "https://mi-dominio.com",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  },
+};
+
+const environment = process.env.NODE_ENV || "development";
+app.use(cors(corsOptions[environment]));
 
 // Modelos del proyecto
 const Product = require("./models/products.models");
@@ -16,7 +28,7 @@ const Role = require("./models/roles.models");
 const User = require("./models/users.models");
 const Category = require("./models/category.models");
 
-// Sincroización con la base de datos
+// Sincronización con la base de datos
 sequalize.sync();
 
 // Rutas del proyecto
