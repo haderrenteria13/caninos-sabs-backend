@@ -116,7 +116,7 @@ exports.getProductsByCategory = async (req, res) => {
 // Actualizar un producto
 exports.updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, description, price, stock, categoryId } = req.body;
+  const { name, description, price, stock, categoryId, imageUrl } = req.body;
 
   try {
     const product = await Product.findByPk(id);
@@ -133,6 +133,7 @@ exports.updateProduct = async (req, res) => {
     product.price = price || product.price;
     product.stock = stock || product.stock;
     product.categoryId = categoryId || product.categoryId;
+    product.imageUrl = imageUrl || product.imageUrl;
 
     await product.save();
 
